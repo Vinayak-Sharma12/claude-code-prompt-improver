@@ -1,0 +1,95 @@
+{
+  "name": "claude-code-prompt-improver",
+  "displayName": "Prompt Improvisor for Claude Code",
+  "description": "Improve the prompt you typed in the Claude Code terminal box with one click, in place, and revert if you don't like it.",
+  "version": "0.1.1",
+  "publisher": "VinayakSharma",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "improvise.run",
+        "title": "Prompt Improver: Improve Prompt in Terminal"
+      },
+      {
+        "command": "improvise.revert",
+        "title": "Prompt Improver: Revert to Original Prompt"
+      },
+      {
+        "command": "improvise.sent",
+        "title": "Prompt Improver: (internal) prompt sent"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "improvise.run",
+        "key": "ctrl+alt+p",
+        "mac": "cmd+alt+p"
+      },
+      {
+        "command": "improvise.revert",
+        "key": "ctrl+alt+z",
+        "mac": "cmd+alt+z"
+      },
+      {
+        "command": "improvise.sent",
+        "key": "enter",
+        "when": "terminalFocus && improvise.canRevert"
+      }
+    ],
+    "configuration": {
+      "title": "Improvise",
+      "properties": {
+        "improvise.model": {
+          "type": "string",
+          "default": "",
+          "description": "Model alias for rewriting (e.g. haiku for speed). Empty = default."
+        },
+        "improvise.claudePath": {
+          "type": "string",
+          "default": "",
+          "description": "Full path to the claude executable if it is not found automatically."
+        }
+      }
+    },
+    "configurationDefaults": {
+      "terminal.integrated.commandsToSkipShell": [
+        "improvise.sent",
+        "improvise.run",
+        "improvise.revert"
+      ]
+    }
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "categories": [
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "prompt",
+    "prompt engineering",
+    "terminal",
+    "ai"
+  ],
+  "galleryBanner": {
+    "color": "#2b1d5c",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vinayak-Sharma12/claude-code-prompt-improver.git"
+  },
+  "homepage": "https://github.com/Vinayak-Sharma12/claude-code-prompt-improver#readme",
+  "bugs": {
+    "url": "https://github.com/Vinayak-Sharma12/claude-code-prompt-improver/issues"
+  }
+}
